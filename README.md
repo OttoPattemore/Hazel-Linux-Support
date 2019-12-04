@@ -1,4 +1,7 @@
 # Hazel
+
+NOTE: Plese open a github issue if you are having trouble compiling. 
+
 NOTE: You may want to build premake5 yourself.  Once you have the premake5 executable, copy it to vendor/bin/premake/premake5
 
 NOTE: This has been tested on Ubuntu 18.04 and you must install libglfw3 xorg-dev libglu1-mesa-dev libglfw3-dev for this to work
