@@ -127,7 +127,11 @@ namespace Hazel {
 	#define HZ_PROFILE_BEGIN_SESSION(name, filepath) ::Hazel::Instrumentor::Get().BeginSession(name, filepath)
 	#define HZ_PROFILE_END_SESSION() ::Hazel::Instrumentor::Get().EndSession()
 	#define HZ_PROFILE_SCOPE(name) ::Hazel::InstrumentationTimer timer##__LINE__(name);
+	#ifdef HZ_PLATFORM_LINUX
+	#define HZ_PROFILE_FUNCTION() HZ_PROFILE_SCOPE(__FUNCTION__)
+	#else
 	#define HZ_PROFILE_FUNCTION() HZ_PROFILE_SCOPE(__FUNCSIG__)
+	#endif
 #else
 	#define HZ_PROFILE_BEGIN_SESSION(name, filepath)
 	#define HZ_PROFILE_END_SESSION()

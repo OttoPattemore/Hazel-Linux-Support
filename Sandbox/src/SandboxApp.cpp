@@ -17,7 +17,10 @@ public:
 	{
 	}
 };
-
+int main(){
+	Hazel::Application* app = new Sandbox();
+	app->Run();
+} 
 Hazel::Application* Hazel::CreateApplication()
 {
 	return new Sandbox();

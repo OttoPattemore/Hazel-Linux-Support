@@ -37,7 +37,6 @@
 	#error "Android is not supported!"
 #elif defined(__linux__)
 	#define HZ_PLATFORM_LINUX
-	#error "Linux is not supported!"
 #else
 	/* Unknown compiler/platform */
 	#error "Unknown platform!"
@@ -46,10 +45,15 @@
 #ifdef HZ_DEBUG
 	#define HZ_ENABLE_ASSERTS
 #endif
-
 #ifdef HZ_ENABLE_ASSERTS
+	#ifdef HZ_PLATFORM_LINUX
+	#define HZ_ASSERT(x, ...) { if(!(x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__);    asm("int $3");} }
+	#define HZ_CORE_ASSERT(x, ...) { if(!(x)) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__);     asm("int $3");} }
+	#endif
+	#ifdef HZ_PLATFORM_WINDOWS
 	#define HZ_ASSERT(x, ...) { if(!(x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define HZ_CORE_ASSERT(x, ...) { if(!(x)) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#endif
 #else
 	#define HZ_ASSERT(x, ...)
 	#define HZ_CORE_ASSERT(x, ...)

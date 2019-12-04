@@ -70,6 +70,15 @@ project "Hazel"
 		"%{IncludeDir.stb_image}"
 	}
 
+	
+	filter "system:windows"
+	systemversion "latest"
+	
+	defines
+	{
+		"HZ_BUILD_DLL",
+		"GLFW_INCLUDE_NONE"
+	}
 	links 
 	{ 
 		"GLFW",
@@ -77,16 +86,7 @@ project "Hazel"
 		"ImGui",
 		"opengl32.lib"
 	}
-
-	filter "system:windows"
-		systemversion "latest"
-
-		defines
-		{
-			"HZ_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
-		}
-
+	
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		runtime "Debug"
@@ -130,9 +130,21 @@ project "Sandbox"
 	{
 		"Hazel"
 	}
-
-	filter "system:windows"
-		systemversion "latest"
+	filter "system:linux"
+	systemversion "latest"
+		links "Glad"
+		links "ImGui"
+		links "dl"
+    	links "GL"
+    	links "glfw"
+    	links "X11"
+    	links "Xxf86vm"
+    	links "Xrandr"
+    	links "pthread"
+    	links "Xi"
+    	links "dl"
+    	links "Xinerama"
+    	links "Xcursor"
 		
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"

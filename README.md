@@ -1,4 +1,17 @@
 # Hazel
+NOTE: You may want to build premake5 yourself.  Once you have the premake5 executable, copy it to vendor/bin/premake/premake5
+
+NOTE: This has been tested on Ubuntu 18.04 and you must install libglfw3 xorg-dev libglu1-mesa-dev libglfw3-dev for this to work
+
+NOTE: To build and run 
+
+./vendor/bin/premake/premake5 gmake
+
+make
+
+cd Sandbox/
+
+././../bin/Debug-linux-x86_64/Sandbox/Sandbox
 
 ![Hazel](/Resources/Branding/Hazel_Logo_Text_Light_Square.png?raw=true "Hazel")
 

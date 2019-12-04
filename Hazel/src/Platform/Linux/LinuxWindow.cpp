@@ -1,6 +1,5 @@
-
 #include "hzpch.h"
-#include "Platform/Windows/WindowsWindow.h"
+#include "Platform/Linux/LinuxWindow.h"
 
 #include "Hazel/Events/ApplicationEvent.h"
 #include "Hazel/Events/MouseEvent.h"
@@ -19,20 +18,20 @@ namespace Hazel {
 
 	Scope<Window> Window::Create(const WindowProps& props)
 	{
-		return CreateScope<WindowsWindow>(props);
+		return CreateScope<LinuxWindow>(props);
 	}
 
-	WindowsWindow::WindowsWindow(const WindowProps& props)
+	LinuxWindow::LinuxWindow(const WindowProps& props)
 	{
 		Init(props);
 	}
 
-	WindowsWindow::~WindowsWindow()
+	LinuxWindow::~LinuxWindow()
 	{
 		Shutdown();
 	}
 
-	void WindowsWindow::Init(const WindowProps& props)
+	void LinuxWindow::Init(const WindowProps& props)
 	{
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
@@ -147,7 +146,7 @@ namespace Hazel {
 		});
 	}
 
-	void WindowsWindow::Shutdown()
+	void LinuxWindow::Shutdown()
 	{
 		glfwDestroyWindow(m_Window);
 		--s_GLFWWindowCount;
@@ -158,13 +157,13 @@ namespace Hazel {
 		}
 	}
 
-	void WindowsWindow::OnUpdate()
+	void LinuxWindow::OnUpdate()
 	{
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
 
-	void WindowsWindow::SetVSync(bool enabled)
+	void LinuxWindow::SetVSync(bool enabled)
 	{
 		if (enabled)
 			glfwSwapInterval(1);
@@ -174,7 +173,7 @@ namespace Hazel {
 		m_Data.VSync = enabled;
 	}
 
-	bool WindowsWindow::IsVSync() const
+	bool LinuxWindow::IsVSync() const
 	{
 		return m_Data.VSync;
 	}
