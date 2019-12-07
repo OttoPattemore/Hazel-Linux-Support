@@ -1,5 +1,6 @@
 # Hazel
-
+NOTE: This is not the original Hazel Engine  it has been modified to add linux support
+NOTE: Premake lisence is located at vendor/bin/premake/premake5
 NOTE: Plese open a github issue if you are having trouble compiling. 
 
 NOTE: You may want to build premake5 yourself.  Once you have the premake5 executable, copy it to vendor/bin/premake/premake5
